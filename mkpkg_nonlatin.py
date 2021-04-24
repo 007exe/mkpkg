@@ -1,7 +1,7 @@
-#mkpkg support module.
-#search for non latin characters in input string. Return position if founded.
-#see python's string.printable for more info.
-#free software. (c) Eugene Mikhaylov, 2011.
+# mkpkg support module.
+# search for non latin characters in input string. Return position if founded.
+# see python's string.printable for more info.
+# free software. (c) Eugene Mikhaylov, 2011.
 
 
 import string
