@@ -10,7 +10,7 @@ from xml.dom.minidom import Node
 if len(sys.argv) <= 2:
     print "Insufficient agumetns"
     sys.exit(2)
-    
+
 doc=xml.dom.minidom.parse(sys.argv[1])
 
 def get_deps():
@@ -51,7 +51,6 @@ def get_deps():
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
-
 def get_package_attrs():
     global doc
     pkgname=pkgver=pkgbuild=pkgarch=""
@@ -71,7 +70,7 @@ def get_package_attrs():
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
-        
+
 def get_maintainer():
     global doc
     try:
@@ -99,7 +98,7 @@ def get_tags():
     except:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
-    
+
 def get_provides():
     global doc
     pkgprovides=""
