@@ -69,7 +69,7 @@ def get_package_attrs():
                 elif ptag.parentNode.nodeName == "build":
                     pkgbuild = ptag.nodeValue.strip()
         print pkgname+" "+pkgver+" "+pkgarch+" "+pkgbuild
-    except:     
+    except:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
@@ -114,7 +114,7 @@ def get_provides():
                 if ptag.parentNode.nodeName == "provides":
                     pkgprovides = ptag.nodeValue.strip()
         print pkgprovides
-    except:     
+    except:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
@@ -129,7 +129,7 @@ def get_conflicts():
                 if ptag.parentNode.nodeName == "conflicts":
                     pkgconflicts = ptag.nodeValue.strip()
         print pkgconflicts
-    except:     
+    except:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
