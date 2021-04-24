@@ -13,6 +13,7 @@ if len(sys.argv) <= 2:
 
 doc = xml.dom.minidom.parse(sys.argv[1])
 
+
 def get_deps():
     global doc
     depstring = ""
@@ -51,6 +52,7 @@ def get_deps():
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
+
 def get_package_attrs():
     global doc
     pkgname = pkgver = pkgbuild = pkgarch = ""
@@ -71,6 +73,7 @@ def get_package_attrs():
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
+
 def get_maintainer():
     global doc
     try:
@@ -84,6 +87,7 @@ def get_maintainer():
     except:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
+
 
 def get_tags():
     taglist = ""
@@ -99,6 +103,7 @@ def get_tags():
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
+
 def get_provides():
     global doc
     pkgprovides = ""
@@ -112,6 +117,7 @@ def get_provides():
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
+
 
 def get_conflicts():
     global doc
