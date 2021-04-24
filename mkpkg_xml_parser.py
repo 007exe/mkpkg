@@ -127,9 +127,7 @@ def get_conflicts():
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit (2)
-
-
-
+        
 if sys.argv[2]=="-m":
     get_maintainer()
  #   sys.exit(0)
