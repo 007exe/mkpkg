@@ -7,23 +7,23 @@ import xml.dom.minidom
 import string
 import sys
 from xml.dom.minidom import Node
-if len (sys.argv) <= 2:
+if len(sys.argv) <= 2:
     print "Insufficient agumetns"
     sys.exit(2)
     
-doc=xml.dom.minidom.parse (sys.argv[1])
+doc=xml.dom.minidom.parse(sys.argv[1])
 
 def get_deps():
     global doc
     depstring=""
     try:
-        for node in doc.getElementsByTagName ("dep"):
+        for node in doc.getElementsByTagName("dep"):
             skip=False
             for depp in node.childNodes:
                 for detail in depp.childNodes:
                     if detail.parentNode.nodeName=="name":
-                        tmp_name=string.strip (detail.nodeValue)
-                        if tmp_name.startswith ("aaa"):
+                        tmp_name=string.strip(detail.nodeValue)
+                        if tmp_name.startswith("aaa"):
                             skip=True
                         else:
                             depstring+=tmp_name
@@ -45,11 +45,11 @@ def get_deps():
                         if not detail.nodeValue:
                             depstring+=" "
                         else:
-                            depstring+=string.strip (detail.nodeValue)+" "
-        print string.strip (depstring)
+                            depstring+=string.strip(detail.nodeValue)+" "
+        print string.strip(depstring)
     except:
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
+        sys.exit(2)
 
 
 def get_package_attrs():
@@ -70,12 +70,12 @@ def get_package_attrs():
         print pkgname+" "+pkgver+" "+pkgarch+" "+pkgbuild
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
+        sys.exit(2)
         
 def get_maintainer():
     global doc
     try:
-        for node in doc.getElementsByTagName ("maintainer"):
+        for node in doc.getElementsByTagName("maintainer"):
             for mtag in node.childNodes:
                 for me in mtag.childNodes:
                     if me.parentNode.nodeName=="name":
@@ -84,13 +84,13 @@ def get_maintainer():
                         print "Email: "+me.nodeValue.strip()
     except:
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
+        sys.exit(2)
 
 def get_tags():
     taglist=""
     global doc
     try:
-        for node in doc.getElementsByTagName ("tags"):
+        for node in doc.getElementsByTagName("tags"):
             for tags in node.childNodes:
                 for tag in tags.childNodes:
                     if tag.parentNode.nodeName=="tag":
@@ -98,7 +98,7 @@ def get_tags():
         print taglist.strip()
     except:
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
+        sys.exit(2)
     
 def get_provides():
     global doc
@@ -112,7 +112,7 @@ def get_provides():
         print pkgprovides
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
+        sys.exit(2)
 
 def get_conflicts():
     global doc
@@ -126,17 +126,17 @@ def get_conflicts():
         print pkgconflicts
     except:     
         print "Oh shi~... No data.xml or it is very ugly."
-        sys.exit (2)
-        
+        sys.exit(2)
+
 if sys.argv[2]=="-m":
     get_maintainer()
- #   sys.exit(0)
-elif sys.argv [2]=="-d":
+#   sys.exit(0)
+elif sys.argv[2]=="-d":
     get_deps()
 #    sys.exit(0)
 elif sys.argv[2]=="-p":
     get_package_attrs()
-    sys.exit (0)
+    sys.exit(0)
 elif sys.argv[2]=="-t":
     get_tags()
     sys.exit(0)
