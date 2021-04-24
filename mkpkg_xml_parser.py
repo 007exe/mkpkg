@@ -1,7 +1,7 @@
-#!/usr/bin/python
-#reads data.xml and prints depends
-#by Eugene Mikhailov
-#this is free software :)
+# !/usr/bin/python
+# reads data.xml and prints depends
+# by Eugene Mikhailov
+# this is free software :)
 
 import xml.dom.minidom
 import string
