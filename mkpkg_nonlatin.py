@@ -13,4 +13,4 @@ if len(sys.argv) <= 1:
 opt=sys.argv[1]
 res=re.search("[^"+string.printable+"]",opt)
 if res != None and len(res.group(0))>0:
-    print(opt.find (res.group(0)))
+    print(opt.find(res.group(0)))
