@@ -49,7 +49,7 @@ def get_deps():
                             depstring += string.strip(detail.nodeValue)+" "
         print string.strip(depstring)
     except:
-        print "Oh shi~... No data.xml or it is very ugly."
+        print ("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -70,7 +70,7 @@ def get_package_attrs():
                     pkgbuild = ptag.nodeValue.strip()
         print pkgname+" "+pkgver+" "+pkgarch+" "+pkgbuild
     except:
-        print "Oh shi~... No data.xml or it is very ugly."
+        print ("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -85,7 +85,7 @@ def get_maintainer():
                     elif me.parentNode.nodeName == "email":
                         print "Email: "+me.nodeValue.strip()
     except:
-        print "Oh shi~... No data.xml or it is very ugly."
+        print ("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -115,7 +115,7 @@ def get_provides():
                     pkgprovides = ptag.nodeValue.strip()
         print pkgprovides
     except:
-        print "Oh shi~... No data.xml or it is very ugly."
+        print ("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -130,7 +130,7 @@ def get_conflicts():
                     pkgconflicts = ptag.nodeValue.strip()
         print pkgconflicts
     except:
-        print "Oh shi~... No data.xml or it is very ugly."
+        print ("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -154,5 +154,5 @@ elif sys.argv[2] == "-C":
     sys.exit(0)
 
 else:
-    print "Unknown arg."
+    print ("Unknown arg.")
     sys.exit(2)

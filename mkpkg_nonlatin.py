@@ -8,7 +8,7 @@ import string
 import sys
 import re
 if len(sys.argv) <= 1:
-    print "Insufficient agumetns"
+    print ("Insufficient agumetns")
     sys.exit(2)
 opt = sys.argv[1]
 res = re.search("[^"+string.printable+"]", opt)
