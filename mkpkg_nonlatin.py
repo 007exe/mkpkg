@@ -8,9 +8,9 @@ import string
 import sys
 import re
 if len(sys.argv) <= 1:
-    print ("Insufficient agumetns")
+    print("Insufficient agumetns")
     sys.exit(2)
 opt = sys.argv[1]
 res = re.search("[^"+string.printable+"]", opt)
-if res != None and len(res.group(0)) > 0:
+if res is not None and len(res.group(0)) > 0:
     print(opt.find(res.group(0)))
