@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<name>
+		acl
+	</name>
+	<version>
+		2.2.53
+	</version>
+	<arch>
+		x86_64
+	</arch>
+	<build>
+		1
+	</build>
+	<short_description>
+		Tools for using POSIX Access Control Lists
+	</short_description>
+	<description>
+		This package contains a set of tools and libraries for manipulating POSIX Access Control Lists. POSIX Access Control Lists (defined in POSIX 1003.1e draft standard 17) are used to define more fine-grained discretionary access rights for files and directories.
+	</description>
+	<dependencies>
+		<dep>
+			<name>
+				attr
+			</name>
+			<condition>
+				atleast
+			</condition>
+			<version>
+				2.4.47
+			</version>
+		</dep>
+		<dep>
+			<name>
+				glibc-solibs
+			</name>
+			<condition>
+				atleast
+			</condition>
+			<version>
+				2.30
+			</version>
+		</dep>
+	</dependencies>
+	<suggests/>
+	<maintainer>
+		<name>
+			chip
+		</name>
+		<email>
+			no@mail
+		</email>
+	</maintainer>
+	<tags>
+		<tag>
+			base
+		</tag>
+		<tag>
+			sys-apps
+		</tag>
+	</tags>
+</package>
