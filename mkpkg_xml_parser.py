@@ -48,8 +48,8 @@ def get_deps():
                         else:
                             depstring += string.strip(detail.nodeValue)+" "
         print string.strip(depstring)
-    except:
-        print ("Oh shi~... No data.xml or it is very ugly.")
+    except Exception as e:
+        print("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -69,8 +69,8 @@ def get_package_attrs():
                 elif ptag.parentNode.nodeName == "build":
                     pkgbuild = ptag.nodeValue.strip()
         print pkgname+" "+pkgver+" "+pkgarch+" "+pkgbuild
-    except:
-        print ("Oh shi~... No data.xml or it is very ugly.")
+    except Exception as e:
+        print("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -84,8 +84,8 @@ def get_maintainer():
                         print "Name: "+me.nodeValue.strip()
                     elif me.parentNode.nodeName == "email":
                         print "Email: "+me.nodeValue.strip()
-    except:
-        print ("Oh shi~... No data.xml or it is very ugly.")
+    except Exception as e:
+        print("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -99,7 +99,7 @@ def get_tags():
                     if tag.parentNode.nodeName == "tag":
                         taglist += (tag.nodeValue.strip()+" ")
         print taglist.strip()
-    except:
+    except Exception as e:
         print "Oh shi~... No data.xml or it is very ugly."
         sys.exit(2)
 
@@ -114,8 +114,8 @@ def get_provides():
                 if ptag.parentNode.nodeName == "provides":
                     pkgprovides = ptag.nodeValue.strip()
         print pkgprovides
-    except:
-        print ("Oh shi~... No data.xml or it is very ugly.")
+    except Exception as e:
+        print("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -129,8 +129,8 @@ def get_conflicts():
                 if ptag.parentNode.nodeName == "conflicts":
                     pkgconflicts = ptag.nodeValue.strip()
         print pkgconflicts
-    except:
-        print ("Oh shi~... No data.xml or it is very ugly.")
+    except Exception as e:
+        print("Oh shi~... No data.xml or it is very ugly.")
         sys.exit(2)
 
 
@@ -154,5 +154,5 @@ elif sys.argv[2] == "-C":
     sys.exit(0)
 
 else:
-    print ("Unknown arg.")
+    print("Unknown arg.")
     sys.exit(2)
