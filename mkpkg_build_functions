@@ -558,33 +558,33 @@ copy_doinst() {
 	esac
 }
 
-copy_doc() {
-	d_echo "copy_doc begin"
-	local real_src_dir="$1"
-	if [ -n "${real_src_dir}" ]; then
-		d_echo "	using ${real_src_dir} as src dir"
-		real_src_dir+="/"
-	fi
+#copy_doc() {
+#	d_echo "copy_doc begin"
+#	local real_src_dir="$1"
+#	if [ -n "${real_src_dir}" ]; then
+#		d_echo "	using ${real_src_dir} as src dir"
+#		real_src_dir+="/"
+#	fi
 
-	go_src_dir
-	docs+=("AUTHORS BUGS BUILD COMPILERS COPYING* NEWS README* \
-	TODO ChangeLog* Changelog* CHANGELOG* LICENSE* License* HACKING")
-	local docdir=
-	
-	if [ -d "${pkgdir}/usr/doc" -a "$(ls -1 "${pkgdir}"/usr/doc 2>/dev/null)" ]; then
-		docdir="${pkgdir}"/usr/doc/$(ls -1 "${pkgdir}"/usr/doc)
-	else
-		docdir="${pkgdir}/usr/doc/${pkgname}-${pkgver}"
-	fi
-	mkdir -p "$docdir"
-	for docfile in ${docs[@]}; do
-		if [ -d "${docfile}" ]; then
-			cp -a "${real_src_dir}${docfile}" "$docdir" 2>/dev/null
-		else    
-			install -m644 "${real_src_dir}${docfile}" "${docdir}"/`basename ${docfile}` 2>/dev/null
-		fi
-	done
-}
+#	go_src_dir
+#	docs+=("AUTHORS BUGS BUILD COMPILERS COPYING* NEWS README* \
+#	TODO ChangeLog* Changelog* CHANGELOG* LICENSE* License* HACKING")
+#	local docdir=
+#	
+#	if [ -d "${pkgdir}/usr/doc" -a "$(ls -1 "${pkgdir}"/usr/doc 2>/dev/null)" ]; then
+#		docdir="${pkgdir}"/usr/doc/$(ls -1 "${pkgdir}"/usr/doc)
+#	else
+#		docdir="${pkgdir}/usr/doc/${pkgname}-${pkgver}"
+#	fi
+#	mkdir -p "$docdir"
+#	for docfile in ${docs[@]}; do
+#		if [ -d "${docfile}" ]; then
+#			cp -a "${real_src_dir}${docfile}" "$docdir" 2>/dev/null
+#		else    
+#			install -m644 "${real_src_dir}${docfile}" "${docdir}"/`basename ${docfile}` 2>/dev/null
+#		fi
+#	done
+#}
 
 install_desktop_and_pixmap() {
 	d_echo "install_desktop_and_pixmap()"
@@ -898,9 +898,9 @@ else
 fi
 set +e
 
-if ! [ "${NO_COPYDOC}" == "1" ]; then
-   copy_doc
-fi
+#if ! [ "${NO_COPYDOC}" == "1" ]; then
+#   copy_doc
+#fi
 
 set -e
 if [ "$(grep '^after_build\(\)' "${startdir}/ABUILD")" ]; then
