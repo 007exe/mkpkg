@@ -7,7 +7,7 @@ BUILD_KEYS="--prefix=/usr \
 --localstatedir=/var \
 --libdir=/usr/lib${LIBDIRSUFFIX} \
 --disable-static \
---mandir=/usr/man \
+--mandir=/usr/share/man \
 --program-prefix= \
 --program-suffix="
 

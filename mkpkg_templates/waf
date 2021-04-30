@@ -3,5 +3,5 @@ BUILD_KEYS="configure --prefix=/usr \
 --sysconfdir=/etc \
 --localstatedir=/var \
 --libdir=/usr/lib${LIBDIRSUFFIX} \
---mandir=/usr/man \
+--mandir=/usr/share/man \
 --docdir=/usr/share/doc/${pkgname}-${pkgver}"
