@@ -484,47 +484,47 @@ set_post_permissions() {
 }
 
 
-#gzip_man_and_info_pages() {
-#	d_echo "gzip_man_and_info_pages()"
-#	for DOCS in man info; do
+gzip_man_and_info_pages() {
+	d_echo "gzip_man_and_info_pages()"
+	for DOCS in man info; do
 #		if [ -d "${pkgdir}/usr/share/$DOCS" ]; then
 #			mv "${pkgdir}/usr/share/$DOCS" "${pkgdir}/usr/$DOCS"
 #			if [[ ! "$(ls ${pkgdir}/usr/share)" ]]; then
 #				rm -rf "${pkgdir}/usr/share" 2>/dev/null
 #			fi
 #		fi
-#		if [ -d "${pkgdir}/usr/$DOCS" ]; then
+		if [ -d "${pkgdir}/usr/share/$DOCS" ]; then
 		# I've never seen symlinks in info pages....
-#			if [ "$DOCS" == "man" ]; then
-#				(cd "${pkgdir}/usr/$DOCS"
-#				for manpagedir in $(find . -type d -name "man*" 2> /dev/null) ; do
-#					( cd $manpagedir
-#					for eachpage in $( find . -type l -maxdepth 1 | grep -v '\.gz$' 2> /dev/null) ; do
-#						ln -s $( readlink $eachpage ).gz $eachpage.gz
-#						rm $eachpage
-#					done )
-#				done)
-#			fi
-#		find "${pkgdir}/usr/$DOCS" -type f -exec gzip -9 '{}' \;
-#		fi
-#	done
-#	local pkginfodir="$pkgdir/usr/info"
-#	if [ -d "$pkginfodir" ] ; then
-#		local infolist
-#		rm -f "$pkginfodir/dir.gz"
-#		infolist=$(ls -1 "$pkginfodir")
-#		if [ ! -z "$infolist" ] ; then
-#			echo "" >> "$pkgdir/install/doinst.sh"
-#			echo "#Install info file(s)" >> "$pkgdir/install/doinst.sh"
-#			echo "" >> "$pkgdir/install/preremove.sh"
-#			echo "#Remove info file(s)" >> "$pkgdir/install/preremove.sh"
-#			for infofile in $infolist ; do
-#				echo "install-info --quiet usr/info/$infofile usr/info/dir" >> "$pkgdir/install/doinst.sh"
-#				echo "install-info --delete --quiet usr/info/$infofile usr/info/dir" >> "$pkgdir/install/preremove.sh"
-#			done
-#		fi
-#	fi
-#	if [ -d "$pkgdir/usr/doc/${pkgname}-${pkgver}" ]; then 
+			if [ "$DOCS" == "man" ]; then
+				(cd "${pkgdir}/usr/share/$DOCS"
+				for manpagedir in $(find . -type d -name "man*" 2> /dev/null) ; do
+					( cd $manpagedir
+					for eachpage in $( find . -type l -maxdepth 1 | grep -v '\.gz$' 2> /dev/null) ; do
+						ln -s $( readlink $eachpage ).gz $eachpage.gz
+						rm $eachpage
+					done )
+				done)
+			fi
+		find "${pkgdir}/usr/share/$DOCS" -type f -exec gzip -9 '{}' \;
+		fi
+	done
+	local pkginfodir="$pkgdir/usr/share/info"
+	if [ -d "$pkginfodir" ] ; then
+		local infolist
+		rm -f "$pkginfodir/dir.gz"
+		infolist=$(ls -1 "$pkginfodir")
+		if [ ! -z "$infolist" ] ; then
+			echo "" >> "$pkgdir/install/doinst.sh"
+			echo "#Install info file(s)" >> "$pkgdir/install/doinst.sh"
+			echo "" >> "$pkgdir/install/preremove.sh"
+			echo "#Remove info file(s)" >> "$pkgdir/install/preremove.sh"
+			for infofile in $infolist ; do
+				echo "install-info --quiet usr/share/info/$infofile usr/share/info/dir" >> "$pkgdir/install/doinst.sh"
+				echo "install-info --delete --quiet usr/share/info/$infofile usr/share/info/dir" >> "$pkgdir/install/preremove.sh"
+			done
+		fi
+	fi
+#	if [ -d "$pkgdir/usr/share/doc/${pkgname}-${pkgver}" ]; then 
 #		if [ -z "$(ls "$pkgdir"/usr/doc/${pkgname}-${pkgver})" ]; then
 #			rm -rf "$pkgdir"/usr/doc/${pkgname}-${pkgver} 2>/dev/null
 #		fi
@@ -534,7 +534,7 @@ set_post_permissions() {
 #			rm -rf "$pkgdir"/usr/doc 2>/dev/null
 #		fi
 #	fi
-#}
+}
 
 copy_doinst() {
 	d_echo "copy_doinst"
@@ -793,7 +793,7 @@ build_sequence() {
 	d_echo "build_sequence() with ${pkgname}"
 	set_custom_opts
 	strip_binaries
-#	gzip_man_and_info_pages
+	gzip_man_and_info_pages
 	set_post_permissions
 	gen_meta_options
 	if [ "${createpkg}" == "yes" ]; then 
