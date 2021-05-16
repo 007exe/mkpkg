@@ -1,4 +1,4 @@
-# !/usr/bin/python
+#!/usr/bin/python
 # reads data.xml and prints depends
 # by Eugene Mikhailov
 # this is free software :)
